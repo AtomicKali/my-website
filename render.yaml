@@ -3,9 +3,12 @@ services:
     name: quantum-verse-2026
     runtime: static
     buildCommand: ""
-    staticPublishPath: .
-    pullRequestPreviewsEnabled: false
+    staticPublishPath: ./
     routes:
       - type: rewrite
         source: /*
         destination: /index.html
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
